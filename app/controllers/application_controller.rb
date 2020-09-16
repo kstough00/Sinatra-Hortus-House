@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
 
   get '/users' do
     @users = User.all
-    erb :'index'
+    erb :'users/index'
   end
 
   get '/new' do
