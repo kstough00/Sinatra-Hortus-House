@@ -1,0 +1,5 @@
+completed:
+1. git status - shows all changes made to the file
+2. git add. - saves code to commit later
+3. git commit -m "..." - overview of what weve done
+4. git push origin master - 
