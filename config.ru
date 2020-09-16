@@ -9,3 +9,5 @@ use SessionsController
 use PlantsController
 use UsersController
 run ApplicationController
+
+#this file details to rack the environment requirements of the application and start the application

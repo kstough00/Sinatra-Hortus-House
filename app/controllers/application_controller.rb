@@ -35,17 +35,17 @@ class ApplicationController < Sinatra::Base
     erb :'users/index'
   end
 
-  get '/new' do
-    erb :'/new'
+  get '/users/new' do
+    erb :'users/new'
   end
 
   get '/users/:id' do
-    @user = Users.find(params[:id])
-    erb :'show'
+    @user = User.find(params[:id])
+    erb :'users/show'
   end
 
   post '/users' do
-    "Hello World"
+    "Hello #{User.name}!"
   end
 
   get "/" do
