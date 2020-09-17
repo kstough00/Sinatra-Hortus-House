@@ -30,6 +30,13 @@ class PlantsController < ApplicationController
         redirect "/plants/#{plant.id}"
     end
 
+    delete "/plants/:id" do
+        plant = Plant.find_by(id:params[:id])
+        plant.destroy
+        redirect "/plants"
+    end
+
+
 
 
     
@@ -43,13 +50,13 @@ class PlantsController < ApplicationController
     #     erb :"/plants/new"
     # end
 
-    get '/plants/:id/edit' do
-        if !logged_in? #checking if they are logged in from our app.rb method 'logged_in?'
-            redirect "/login" #redirecting if not logged in
-        else
-            "An edit plant form" #rendering form if they are logged in
-        end
-    end
+    # get '/plants/:id/edit' do
+    #     if !logged_in? #checking if they are logged in from our app.rb method 'logged_in?'
+    #         redirect "/login" #redirecting if not logged in
+    #     else
+    #         "An edit plant form" #rendering form if they are logged in
+    #     end
+    # end
 
 
 end

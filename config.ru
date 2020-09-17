@@ -5,7 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride #allows us to send a PATCH request/edit
-use SessionsController
+use SessionController
 use PlantsController
 use UsersController
 run ApplicationController

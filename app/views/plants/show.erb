@@ -1,7 +1,14 @@
 <h2> <%= @plant.name %> </h2>
 
 
-<p> Created at: <%= @todo.created_at.strftime("%m/%d/%Y")%></p>
+<p> Created at: <%= @todo.created_at.localtime.strftime("%m/%d/%Y - %l:M")%></p>
 
 
 <a href=<%="/plants/#{@plant.id}/edit"%>> <button> Edit </button> </a>
+<br>
+<br>
+<form method="post" action="/plants/<%=@plant.id%>" >
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete">
+
+</form>
