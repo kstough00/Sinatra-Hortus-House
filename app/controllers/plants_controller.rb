@@ -19,7 +19,10 @@ class PlantsController < ApplicationController
     end
 
     post '/plants' do
-        plant = Plant.create(params[:plant])
+        # params[:plants][:user_id] = current_user
+        plant = current_user.plants.create(params[:plant])
+        # if plant.save
+        # plant = Plant.create(params[:plant])
         redirect "/plants/#{plant.id}"
     end
 
