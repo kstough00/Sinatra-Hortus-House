@@ -11,7 +11,11 @@ class ApplicationController < Sinatra::Base
 
   helpers do #helper methods available to the whole application
     def logged_in? #sets an easy method for us to check the truthiness value of our user being logged in or not
-      !!session[:email] #double negation takes the object and converts it into a binary value of 'true' or 'false' (checks truthiness)
+      !!session[:user_id] #double negation takes the object and converts it into a binary value of 'true' or 'false' (checks truthiness)
+    end
+
+    def current_user
+      @user = User.find_by_id(session[:user_id]) if logged_in?
     end
 
     def login(email, password) #is the user who they claim to be?
