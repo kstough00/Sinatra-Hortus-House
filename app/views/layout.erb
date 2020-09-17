@@ -15,6 +15,21 @@
   </head>
   <body>
     <div class="wrapper">
+      <nav class="menu">
+      <% if session[:user_id] %>
+        <ul>
+          <li><a href="/plants">All Plants</a></li>
+          <li><a href="/plants/new">New Plant</a></li>
+          <form method="post" action="/logout">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Logout">
+          </form>
+        <% else %>
+          <li><a href="/signup">Sign Up</a></li>
+          <li><a href="/login">Log In</a></li>
+        </ul>
+        <% end %>
+      </nav>
 
         <%= yield %>
 
