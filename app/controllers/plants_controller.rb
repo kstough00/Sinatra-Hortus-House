@@ -24,6 +24,13 @@ class PlantsController < ApplicationController
         erb :"/plants/edit"
     end
 
+    patch "/plants/:id" do
+        plant = Plant.find_by(id:params[:id])
+        plant.update (params[:plant])
+        redirect "/plants/#{plant.id}"
+    end
+
+
 
     
 

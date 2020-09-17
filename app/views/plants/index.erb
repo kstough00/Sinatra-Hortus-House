@@ -1,8 +1,8 @@
 <h1> All Plants: </h1>
 
 <ul>
-<% @plants.each do |plants|%>
-    <li><%= plant.name %></li>
+<% @plants.each do |plant|%>
+    <a href="/plants/<%= plant.id %>%"><li><%= plant.name %></li></a>
 <%end%>
 
 </ul>
