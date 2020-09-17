@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
 
     get '/plants/:id' do
         if session[:user_id]
-            find_plant
+            Plant.find(params[:id])
             erb :"/plants/show"
         else
             redirect "/"
@@ -51,6 +51,9 @@ class PlantsController < ApplicationController
         @plant = Plant.find_by(id:params[:id])
     end
 
+end
+end
+
 
 
     
@@ -71,6 +74,3 @@ class PlantsController < ApplicationController
     #         "An edit plant form" #rendering form if they are logged in
     #     end
     # end
-
-
-end

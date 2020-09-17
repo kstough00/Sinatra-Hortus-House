@@ -3,20 +3,21 @@ class UsersController < ApplicationController
         erb :"/users/new"
     end
 
-    post "/users" do
-        if params[:password] == params[:password_confirm] #password validation, checks to make sure fields are not blank
-            params.delete(:password_confirm)
+    post "/signup" do
+        # if params[:password] == params[:password] #password validation, checks to make sure fields are not blank
+        #     params.delete(:password)
             user = User.new(params)
             if user.save
                 session[:user_id] = user.id
                 redirect "/plants"
             else
                 @errors = user.errors.full_messages
-                erb :"/users/signup"
+                erb :"/users/new"
             end
-        else
-            redirect "/signup"
-        end
+        # else
+        #     binding.pry
+        #     redirect "/signup"
+        # end
     end
         
 end

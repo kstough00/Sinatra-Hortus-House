@@ -1,7 +1,7 @@
 <h2> <%= @plant.name %> </h2>
 
 
-<p> Created at: <%= @todo.created_at.localtime.strftime("%m/%d/%Y - %l:M")%></p>
+<p> Created at: <%= @plant.created_at.localtime.strftime("%m/%d/%Y - %l:M")%></p>
 
 
 <a href=<%="/plants/#{@plant.id}/edit"%>> <button> Edit </button> </a>

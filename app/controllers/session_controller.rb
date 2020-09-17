@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     end
 
     post '/login' do #gets user attempting login, authenticates with pw, if valid-logs in, else-redirect
-        user = user.find_by(email: params[:email])
+        user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect "/plants"
