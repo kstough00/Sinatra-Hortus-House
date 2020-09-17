@@ -14,9 +14,9 @@ class SessionController < ApplicationController
         end
     end
 
-    post '/logout' do #will log the user out
+    delete '/logout' do #will log the user out
         logout! #inherits this method from our app.rb logout method
-        redirect "/login"
+        redirect "/"
     end
 
 
