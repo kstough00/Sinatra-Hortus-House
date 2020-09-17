@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     end
 
     post "/users" do
-        if params[:password] == params[:password_confirm] #front end pw confirmation
+        if params[:email] != "" && params[:password] != "" && params[:password] == params[:password_confirm] #password validation, checks to make sure fields are not blank
             params.delete(:password_confirm)
             user = User.create(params)
             session[:user_id] = user.id 
