@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
 
     get '/plants/:id' do
         if session[:user_id]
-            Plant.find(params[:id])
+            @plant = Plant.find(params[:id])
             erb :"/plants/show"
         else
             redirect "/"
@@ -27,16 +27,21 @@ class PlantsController < ApplicationController
     end
 
     get "/plants/:id/edit" do
-        find_plant
+        find_plant 
+        # @plant = Plant.find_by_id(params[:id])
         erb :"/plants/edit"
     end
 
     patch "/plants/:id" do
         find_plant
         # if plant.user_id == session[:user_id]
-        if current_user.id = plant.user_id
+        # binding.pry
+        if current_user.id = @plant.user_id
             @plant.update (params[:plant])
             redirect "/plants/#{@plant.id}"
+        else
+            redirect "/plants"
+        end
     end
 
     delete "/plants/:id" do
@@ -51,7 +56,6 @@ class PlantsController < ApplicationController
         @plant = Plant.find_by(id:params[:id])
     end
 
-end
 end
 
 

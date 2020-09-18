@@ -14,13 +14,16 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id] #double negation takes the object and converts it into a binary value of 'true' or 'false' (checks truthiness)
     end
 
-    def current_user
+    def current_user 
       @user = User.find_by_id(session[:user_id]) if logged_in?
+    end
+
+    def find_plant
+      @plant = Plant.find_by_id(params[:id]) if logged_in?
     end
 
     def login(email, password) #is the user who they claim to be?
       user = User.find_by(:email => email)
-      # binding.pry
       if user && user.authenticate(password)
         session[:email] = user.email
       else
@@ -32,24 +35,15 @@ class ApplicationController < Sinatra::Base
       session.clear
     end
 
-  end
+    def delete
+      find_plant
+      @plant.destroy
+    end
 
-  get '/users' do
-    @users = User.all
-    erb :'users/index'
   end
 
   get '/users/new' do
     erb :'users/new'
-  end
-
-  get '/users/:id' do
-    @user = User.find(params[:id])
-    erb :'users/show'
-  end
-
-  post '/users' do
-    "Hello #{User.name}!"
   end
 
   get "/" do

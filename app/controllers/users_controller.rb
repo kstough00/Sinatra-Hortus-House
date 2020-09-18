@@ -15,7 +15,6 @@ class UsersController < ApplicationController
                 erb :"/users/new"
             end
         # else
-        #     binding.pry
         #     redirect "/signup"
         # end
     end

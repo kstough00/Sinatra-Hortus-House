@@ -5,3 +5,9 @@ class CreatePlants < ActiveRecord::Migration
   end
 end
 end
+
+# class AddTimestampsToUser < ActiveRecord::Migration
+#   def change_table
+#       add_timestamps(:users)
+#   end
+# end
