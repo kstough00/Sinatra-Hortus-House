@@ -21,7 +21,6 @@ class PlantsController < ApplicationController
     post '/plants' do
         # params[:plants][:user_id] = current_user
         plant = current_user.plants.create(params[:plant])
-        # if plant.save
         # plant = Plant.create(params[:plant])
         redirect "/plants/#{plant.id}"
     end
@@ -34,8 +33,6 @@ class PlantsController < ApplicationController
 
     patch "/plants/:id" do
         find_plant
-        # if plant.user_id == session[:user_id]
-        # binding.pry
         if current_user.id = @plant.user_id
             @plant.update (params[:plant])
             redirect "/plants/#{@plant.id}"
